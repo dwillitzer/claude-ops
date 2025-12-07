@@ -15,7 +15,8 @@
 │   └── EXECUTION_POLICY.md      — How agents execute work
 │
 ├── sops/                        ← PROCEDURES (human-edit only)
-│   ├── SUBAGENT_SPAWNING.md     — How directors spawn subagents
+│   ├── TEAM_INITIATION.md       — How directors collaborate with teams
+│   ├── TEAM_COLLABORATION.md    — How teams and directors work together
 │   └── HANDOFF_PROTOCOL.md      — How directors coordinate
 │
 ├── active/                      ← CURRENT STATE (agents update)
@@ -53,7 +54,8 @@
 - **EXECUTION_POLICY.md** — Valid artifacts, tool usage, file operations, communication patterns, error handling
 
 ### SOPs (How To)
-- **SUBAGENT_SPAWNING.md** — When to spawn, checklist, template, limits
+- **TEAM_INITIATION.md** — When to collaborate, checklist, templates, limits
+- **TEAM_COLLABORATION.md** — How teams and directors work together effectively
 - **HANDOFF_PROTOCOL.md** — When to handoff, format, routing, tracking
 
 ### Active (Current State)

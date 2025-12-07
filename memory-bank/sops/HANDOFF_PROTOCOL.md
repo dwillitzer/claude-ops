@@ -182,7 +182,7 @@ npx agentdb query "handoff blocked" --k=10
 ### Status Update
 ```
 Update handoff status in AgentDB when state changes:
-npx agentdb reflexion store "Handoff [ID]: [new-status]" "[session]" 0.9 true "handoff-update"
+npx claude-flow@alpha memory store "handoff-status/[ID]" "{ \"status\": \"[new-status]\", \"timestamp\": \"[ISO-DATE]\" }" --namespace "handoffs"
 ```
 
 ---

@@ -71,15 +71,27 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Spawn architecture subagents
-npx claude-flow@alpha agent spawn architecture-analyst
-npx claude-flow@alpha swarm "Evaluate architecture options for [X]"
+# Specialized architecture evaluation using SPARC architect mode
+npx claude-flow@alpha sparc architect "Evaluate architecture options for [X]" --format markdown
 
-# Store decisions
+# Strategic architecture planning with Goal-Oriented Action Planning
+npx claude-flow@alpha goal plan "Design robust, scalable [system] architecture"
+
+# Spawn specialized architecture analysts
+npx claude-flow@alpha automation auto-spawn "Architecture analysis for [system]" --mix "pattern-evaluator,integration-designer,performance-architect"
+
+# Collaborative architecture design with swarm coordination
+npx claude-flow@alpha swarm "Architecture design and evaluation" --strategy architectural --max-agents 4
+
+# Store Architecture Decision Records (ADRs) with high confidence
 npx agentdb reflexion store "ADR: [decision]" "[session]" 0.95 true "architecture-decision"
 
-# Query prior decisions
+# Query prior architecture decisions and patterns
 npx agentdb query "architecture pattern [topic]" --k=5
+npx agentdb skill_search "task: architecture evaluation" --min_success_rate 0.85
+
+# Cross-domain architecture analysis
+npx claude-flow@alpha memory query "architecture decisions cross-domain implications"
 ```
 
 ---

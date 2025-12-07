@@ -90,15 +90,34 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Spawn research subagents
-npx claude-flow@alpha agent spawn technology-evaluator
-npx claude-flow@alpha swarm "Research [topic] comprehensively"
+# SPARC Research Commands
+npx claude-flow@alpha sparc spec "Research [topic] comprehensively" --mode research --format markdown
+npx claude-flow@alpha sparc modes --filter=research
+npx claude-flow@alpha sparc info research --details
 
-# Store findings
-npx agentdb reflexion store "Finding: [finding]" "[session]" 0.9 true "research"
+# Automation Research Workflows
+npx claude-flow@alpha automation auto-spawn "Conduct literature review on [topic]" --agents=researcher,analyst
+npx claude-flow@alpha automation run-workflow "comparative-analysis-workflow" --input="[technology-area]"
+npx claude-flow@alpha automation create-workflow "research-discovery" --steps="literature,evaluation,comparison"
 
-# Query prior research
-npx agentdb query "research [topic]" --k=10
+# AgentDB Research Intelligence
+npx agentdb-conversations skill_search "technology evaluation" --min_success_rate=0.8 --k=8
+npx agentdb-conversations skill_search "literature review methodology" --min_success_rate=0.85
+npx agentdb-conversations agentdb_search "best practices [domain]" --k=15 --min_similarity=0.7
+npx agentdb-conversations reflexion_store "[session]" "comprehensive [topic] research" "[outcome]" [reward] [success] "[critique]" "[input]" "[output]" [latency] [tokens]
+
+# Research Memory & Intelligence
+npx claude-flow@alpha memory retrieve "research-patterns/[domain]" --limit=20
+npx claude-flow@alpha memory store "research-discovery/[topic]" "[findings-and-methodology]"
+npx claude-flow@alpha memory search "competitive-analysis" --namespace="research" --limit=12
+
+# Research Orchestration
+npx claude-flow@alpha orchestrate research-task "[research-objective]" --agents=3 --strategy="parallel"
+npx claude-flow@alpha workflow research-pipeline --input="[research-question]" --output="findings"
+
+# Goal Planning & Strategy
+npx claude-flow@alpha goals define "research-objective" --timeline="[weeks]" --milestones=5
+npx claude-flow@alpha goals track "research-[project]" --progress=auto --alerts=true
 ```
 
 ---

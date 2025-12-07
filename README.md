@@ -5,9 +5,9 @@ A structured multi-agent orchestration system for Claude-based AI workflows.
 ## Directory Structure
 
 ```
-claude-ops/
+.claude/
 ├── agents/           # Director-level agents (loaded into main context)
-├── subagents/        # Domain-specific subagents (queried via AgentDB)
+├── teams/            # Domain-specific teams (queried via AgentDB)
 └── memory-bank/      # Shared memory structures
     ├── active/       # Current context and issues
     ├── constitutional/  # Core principles and constitution
@@ -19,7 +19,7 @@ claude-ops/
 
 ## Agents Overview
 
-The system uses a **director-based architecture** with six specialized directors:
+The system uses a **director-based architecture** with eight specialized directors:
 
 - **Architecture Director**: System design, patterns, technical decisions
 - **Business Director**: Strategy, priorities, resource allocation
@@ -27,14 +27,16 @@ The system uses a **director-based architecture** with six specialized directors
 - **Engineering Director**: Implementation, code, CI/CD
 - **Research Director**: Research, exploration, best practices
 - **Documentation Director**: Formal documentation
+- **Operations Director**: Production operations, monitoring, reliability
+- **Security Director**: Security architecture, risk management, compliance
 
 See [`agents/README.md`](agents/README.md) for complete director documentation.
 
-## Subagents
+## Teams
 
-Directors spawn domain-specific subagents in their respective subdirectories. Subagents are NOT loaded into main context and are discovered via AgentDB queries.
+Directors collaborate with domain-specific teams in their respective areas. Team members are discovered via AgentDB queries when their specialized expertise is needed.
 
-See [`subagents/README.md`](subagents/README.md) for subagent lifecycle and rules.
+See [`teams/README.md`](teams/README.md) for team collaboration and coordination.
 
 ## Memory Bank
 

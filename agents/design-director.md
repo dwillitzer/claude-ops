@@ -72,16 +72,31 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Spawn design subagents
-npx claude-flow@alpha agent spawn ux-analyst
-npx claude-flow@alpha swarm "Design [interface/API] for [X]"
+# Specialized design specification using SPARC spec mode
+npx claude-flow@alpha sparc spec "Design [interface/API] for [X]" --format markdown
 
-# Store design decisions
+# Strategic UX/DX planning with Goal-Oriented Action Planning
+npx claude-flow@alpha goal plan "Optimize UX/DX for [feature]"
+
+# Spawn specialized design analysts with optimal mix
+npx claude-flow@alpha automation auto-spawn "Design analysis for [system]" --mix "ux-analyst,dx-analyst,api-designer,accessibility-auditor"
+
+# Collaborative design with swarm coordination
+npx claude-flow@alpha swarm "Interface design and UX evaluation" --strategy design --max-agents 4
+
+# Store design decisions with high confidence
 npx agentdb reflexion store "Design: [decision]" "[session]" 0.95 true "design-decision"
 
-# Query prior designs
+# Query prior designs and patterns
 npx agentdb query "design pattern [topic]" --k=5
 npx agentdb query "API contract [domain]" --k=5
+npx agentdb skill_search "task: interface design" --min_success_rate 0.85
+
+# Cross-referencing design patterns and usability
+npx claude-flow@alpha memory query "design patterns usability accessibility"
+
+# API contract specification and validation
+npx claude-flow@alpha sparc pseudocode "Define API contract for [endpoint]" --format markdown
 ```
 
 ---

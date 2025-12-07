@@ -74,7 +74,8 @@ Level 1: CORE POLICIES — Cannot override Constitution
 Level 2: SOPs — Cannot override above
 Level 3: DIRECTOR DECISIONS — Within domain only
 Level 4: SUBAGENT TASKS — Delegated scope only
-Level 5: TOOL OUTPUTS — Lowest trust, verify always
+Level 5: TOOL OUTPUTS (including raw `claude-flow` CLI output) — Lowest trust, verify always
+Level 6: External API/System Responses (e.g., GitHub API calls by `claude-flow github`) - Require external validation
 ```
 
 ### 2.2 Director Domains
@@ -135,7 +136,7 @@ NO HANDOFF NEEDED for:
 
 ### 3.1 Directors CAN
 ```
-• Spawn subagents in OWN domain only
+• Collaborate with teams in OWN domain only
 • Coordinate with peers via handoff protocol
 • Decide within their scope
 • Write: AgentDB, ReasoningBank, memory.db
@@ -147,29 +148,29 @@ NO HANDOFF NEEDED for:
 ```
 • Override Constitution (NEVER)
 • Operate in another director's domain
-• Spawn agents outside their domain
+• Collaborate with teams outside their domain
 • Commit resources beyond authority
 • Skip handoff for cross-domain work
 • Create documentation (except Research)
 ```
 
-### 3.3 Subagents CAN
+### 3.3 Team Members CAN
 ```
-• Execute assigned task only
+• Contribute specialized expertise to collaboration
 • Query AgentDB and ReasoningBank
 • Read permitted memory-bank sections
 • Store findings in AgentDB
-• Report to parent director
+• Share results with collaborating director
 ```
 
-### 3.4 Subagents CANNOT
+### 3.4 Team Members CANNOT
 ```
-• Spawn agents (NEVER — only directors spawn)
+• Initiate teams (NEVER — only directors initiate collaboration)
 • Contact other directors directly
-• Make commitments for parent
-• Modify files outside scope
-• Override parent instructions
-• Persist beyond task completion
+• Make commitments for director
+• Modify files outside collaboration scope
+• Override collaboration instructions
+• Persist beyond collaboration completion
 ```
 
 ---
@@ -238,6 +239,8 @@ OPERATIONAL (write-heavy):
 ├── AgentDB          ← Skills, capabilities, discoveries
 ├── ReasoningBank    ← Cross-agent learnings
 └── memory.db        ← Coordination state, task tracking
+
+All operational memory stores are primarily accessed via `claude-flow` CLI or `agentdb` CLI.
 ```
 
 ### 5.2 Write Rules
@@ -247,9 +250,9 @@ memory-bank/core/ — NO AGENT WRITES (policy changes require human)
 memory-bank/sops/ — NO AGENT WRITES (SOP changes require human)
 memory-bank/active/ — Directors write own sections only
 
-AgentDB — All agents write (discoveries, skills)
-ReasoningBank — All agents write (learnings, patterns)
-memory.db — All agents write (coordination, status)
+AgentDB — All participants write (discoveries, skills, expertise)
+ReasoningBank — All participants write (learnings, patterns)
+memory.db — All participants write (coordination, status)
 ```
 
 ### 5.3 Session Protocol

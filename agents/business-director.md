@@ -106,15 +106,32 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Query project state
+# Query project state and priorities
 npx agentdb query "priority status" --k=5
 npx agentdb query "resource allocation" --k=5
+npx claude-flow@alpha memory query "business priorities strategic decisions"
 
-# Store decisions
+# Cost and performance analysis for resource oversight
+npx claude-flow@alpha analysis token-usage --report-format json
+npx claude-flow@alpha analysis claude-cost --timeframe "7d"
+npx claude-flow@alpha analysis bottleneck-detect --component "resource-allocation"
+
+# Strategic business planning with Goal-Oriented Action Planning
+npx claude-flow@alpha goal plan "Optimize resource allocation for [objective]"
+
+# Market and business opportunity analysis
+npx claude-flow@alpha automation auto-spawn "Evaluate market opportunity for [X]" --mix "priority-analyst,resource-planner,risk-assessor"
+
+# Cross-director coordination for business objectives
+npx claude-flow@alpha swarm "Coordinate [objective] across directors" --strategy business --max-agents 3
+
+# Store high-confidence business decisions with rationale
 npx agentdb reflexion store "Priority: [decision]" "[session]" 0.95 true "business-decision"
+npx agentdb reflexion store "Resource Allocation: [allocation]" "[session]" 0.90 true "resource-decision"
 
-# Coordinate directors
-npx claude-flow@alpha swarm "Coordinate [objective] across directors"
+# Query business intelligence and patterns
+npx agentdb skill_search "task: business analysis" --min_success_rate 0.85
+npx agentdb query "business decision patterns market analysis" --k=8
 ```
 
 ---

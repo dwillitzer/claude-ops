@@ -47,16 +47,21 @@ These do NOT count as work:
 ### 2.1 Claude Flow CLI
 ```bash
 # Swarm deployment — use for multi-agent tasks
-npx claude-flow@alpha swarm "[objective]"
+# npx claude-flow@alpha swarm "[objective]"
+# Directors should use this, detailed usage in HANDOFF_PROTOCOL.md
+npx claude-flow@alpha swarm --help
 
 # Hive mind — use for intelligent coordination
 npx claude-flow@alpha hive-mind spawn "[task]"
+npx claude-flow@alpha hive-mind --help
 
 # Individual agent — use for single specialist
 npx claude-flow@alpha agent spawn [type]
 
 # Parallel spawning — use for speed
-mcp__claude-flow__agents_spawn_parallel
+# Use `swarm` with `--parallel` or `automation auto-spawn` for parallel execution
+npx claude-flow@alpha swarm "[objective]" --parallel --max-agents [N]
+npx claude-flow@alpha automation auto-spawn "[task]" --mix "[agent-mix]"
 
 # Status check — verify spawned agents
 npx claude-flow@alpha agent list
@@ -64,6 +69,22 @@ npx claude-flow@alpha agent list
 # Memory operations
 npx claude-flow@alpha memory store "[key]" "[value]"
 npx claude-flow@alpha memory query "[pattern]"
+
+# Workflow execution - for structured multi-phase tasks (e.g., SPARC)
+npx claude-flow@alpha automation run-workflow "[workflow-name]" --task "[task]"
+
+# SPARC methodology - direct invocation for structured development phases
+npx claude-flow@alpha sparc [mode] "[objective]" --format markdown
+
+# Goal-Oriented Action Planning - for complex objective breakdown
+npx claude-flow@alpha goal plan "[objective]"
+
+# Performance Analysis and Telemetry (for Directors like Business/Operations)
+npx claude-flow@alpha analysis token-usage --report-format json
+npx claude-flow@alpha analysis bottleneck-detect
+
+# GitHub Integration (for CI/CD, PRs, Checkpointing)
+npx claude-flow@alpha github [mode] "[objective]" --auto-approve
 ```
 
 ### 2.2 AgentDB CLI
@@ -123,7 +144,8 @@ Before creating any file:
 1. Verify you have authority (check domain)
 2. Check file doesn't exist (no silent overwrite)
 3. Use correct naming convention
-4. Register in AgentDB if agent/subagent
+4. Create with `npx claude-flow@alpha file create [path] --content "[content]"` or appropriate shell commands.
+5. Register in AgentDB if agent/subagent
 
 After creating file:
 1. Verify file exists

@@ -14,6 +14,8 @@
 | [engineering-director.md](engineering-director.md) | Implementation, code, CI/CD | Writes code |
 | [research-director.md](research-director.md) | Research, exploration, best practices | Creates research docs (exception) |
 | [documentation-director.md](documentation-director.md) | All formal documentation | Only agent that creates docs |
+| [operations-director.md](operations-director.md) | Production ops, monitoring, reliability | Manages production systems |
+| [security-director.md](security-director.md) | Security architecture, risk, compliance | Final security authority |
 
 ---
 

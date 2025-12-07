@@ -74,18 +74,26 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Spawn engineering subagents
-npx claude-flow@alpha agent spawn feature-implementer
-npx claude-flow@alpha swarm "Implement [feature] with tests"
+# Spawn engineering subagents with optimal agent mix
+# Use `automation auto-spawn` for optimal agent mix, or `swarm` for specific tasks
+npx claude-flow@alpha automation auto-spawn "Implement [feature] with tests" --mix "feature-implementer,test-writer"
+npx claude-flow@alpha swarm "Implement [feature] with tests" --strategy development --max-agents 3
 
-# Parallel implementation
-mcp__claude-flow__agents_spawn_parallel
+# For complex, multi-phase implementation, use SPARC TDD mode
+npx claude-flow@alpha sparc tdd "Implement [feature] with comprehensive tests" --format markdown
 
-# Store implementation patterns
+# Parallel implementation using swarm coordination
+npx claude-flow@alpha swarm "Parallel engineering implementation" --parallel --max-agents 5
+
+# Store implementation patterns in AgentDB
 npx agentdb reflexion store "Pattern: [pattern]" "[session]" 0.9 true "engineering"
 
-# Query prior implementations
+# Query prior implementations and patterns
 npx agentdb query "implementation [topic]" --k=5
+npx agentdb skill_search "task: [engineering task]" --min_success_rate 0.8
+
+# Performance bottleneck analysis for optimization work
+npx claude-flow@alpha analysis bottleneck-detect --component "[system/module]"
 ```
 
 ---

@@ -106,8 +106,11 @@ When done:
 # For single subagent
 npx claude-flow@alpha agent spawn [agent-type] --config=.claude/subagents/[domain]/[file].md
 
-# For multiple parallel
-npx claude-flow@alpha swarm "[objective]" --agents=[N]
+# For multiple parallel agents for a single objective, use 'swarm' with '--parallel'
+npx claude-flow@alpha swarm "[objective]" --parallel --max-agents [N]
+# For intelligent auto-spawning based on task, use 'automation auto-agent' or 'smart-spawn'
+npx claude-flow@alpha automation auto-agent --task-complexity [complexity] --swarm-id [swarm-id]
+# npx claude-flow@alpha automation smart-spawn --requirement "[requirement]" --max-agents [N]
 
 # Verify deployment
 npx claude-flow@alpha agent list

@@ -85,15 +85,42 @@ Every response MUST produce ONE of:
 ## TOOLS
 
 ```bash
-# Spawn documentation subagents
-npx claude-flow@alpha agent spawn api-documenter
-npx claude-flow@alpha swarm "Document [feature/system]"
+# SPARC Documentation Commands
+npx claude-flow@alpha sparc spec "Document [feature/system]" --mode documentation --format markdown
+npx claude-flow@alpha sparc modes --filter=documentation
+npx claude-flow@alpha sparc info documentation --details
 
-# Store documentation patterns
-npx agentdb reflexion store "DocPattern: [pattern]" "[session]" 0.9 true "documentation"
+# Automation Documentation Workflows
+npx claude-flow@alpha automation auto-spawn "Generate comprehensive documentation for [feature]" --agents=documenter,writer,reviewer
+npx claude-flow@alpha automation run-workflow "documentation-generation-workflow" --input="[source-code]"
+npx claude-flow@alpha automation create-workflow "api-docs-pipeline" --steps="analysis,generation,review,publish"
 
-# Query prior documentation
-npx agentdb query "documentation [topic]" --k=5
+# Structured Documentation Patterns
+npx claude-flow@alpha docs template --type="api-documentation" --output="[endpoint]-docs.md"
+npx claude-flow@alpha docs template --type="user-guide" --output="[feature]-guide.md"
+npx claude-flow@alpha docs validate --input="[document]" --standard="technical-writing"
+npx claude-flow@alpha docs transform --input="[source]" --format="markdown" --style="developer-friendly"
+
+# AgentDB Documentation Intelligence
+npx agentdb-conversations skill_search "technical writing" --min_success_rate=0.85 --k=10
+npx agentdb-conversations skill_search "api documentation patterns" --min_success_rate=0.9
+npx agentdb-conversations agentdb_search "documentation standards [domain]" --k=12 --min_similarity=0.8
+npx agentdb-conversations reflexion_store "[session]" "documentation pattern [type]" "[outcome]" [reward] [success] "[feedback]" "[requirements]" "[generated]" [latency] [tokens]
+
+# Documentation Memory & Quality
+npx claude-flow@alpha memory retrieve "documentation-patterns/[type]" --limit=15
+npx claude-flow@alpha memory store "documentation-asset/[feature]" "[content-and-metadata]"
+npx claude-flow@alpha memory search "style-guide-exceptions" --namespace="documentation" --limit=8
+npx claude-flow@alpha memory retrieve "cross-references/[topic]" --limit=10
+
+# Documentation Orchestration
+npx claude-flow@alpha orchestrate doc-task "Create documentation for [feature]" --agents=2 --strategy="sequential"
+npx claude-flow@alpha workflow documentation-review --input="[draft]" --reviewers="technical,ux"
+
+# Quality & Consistency
+npx claude-flow@alpha docs consistency-check --scope="[project]" --standard="company-style-guide"
+npx claude-flow@alpha docs link-validation --input="[document]" --external-links=true
+npx claude-flow@alpha docs accessibility-audit --input="[content]" --wcag-level="AA"
 ```
 
 ---
