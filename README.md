@@ -1,66 +1,204 @@
-# Claude-Ops Agent System
+# Claude-Ops CLI
 
-A structured multi-agent orchestration system for Claude-based AI workflows.
+**Director-based multi-agent orchestration CLI with WASM security hardening**
+
+[![npm version](https://img.shields.io/npm/v/claude-ops.svg)](https://www.npmjs.com/package/claude-ops)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Features
+
+- 🐝 **Queenbee Orchestration**: Strategic, tactical, and adaptive director coordination
+- 🔐 **WASM Security**: Rust-compiled security layer prevents prompt injection, data leaks
+- 🚀 **Simple Commands**: `init`, `spawn`, `status`, `handoff`
+- 📦 **Zero Project Pollution**: CLI lives in npm, templates copy on init
+- 🎯 **Three Scopes**: Project (.claude), user (~/.claude), or custom global paths
+
+## Installation
+
+```bash
+# Global install
+npm install -g claude-ops
+
+# Or use with npx (no install)
+npx claude-ops <command>
+```
+
+## Quick Start
+
+```bash
+# Initialize (interactive wizard)
+claude-ops init --interactive
+
+# Or quick init in current directory
+claude-ops init
+
+# Spawn all 8 directors
+claude-ops spawn all
+
+# Check status
+claude-ops status
+```
+
+## Commands
+
+### `init` - Initialize Structure
+
+```bash
+# Current directory (default)
+claude-ops init
+
+# User home (~/.claude)
+claude-ops init --scope user
+
+# Custom global path
+claude-ops init --scope global --path /opt/claude-ops
+
+# Interactive wizard
+claude-ops init --interactive
+
+# Minimal setup (no ReasoningBank/hive-mind)
+claude-ops init --minimal
+
+# Specific directors only
+claude-ops init --directors architecture,engineering,security
+```
+
+### `spawn` - Spawn Directors
+
+```bash
+# All 8 directors
+claude-ops spawn all
+
+# Strategic directors only
+claude-ops spawn strategic
+
+# Tactical directors only
+claude-ops spawn tactical
+
+# Single director
+claude-ops spawn architecture
+
+# Custom configuration
+claude-ops spawn engineering --type tactical --workers 12 --encryption
+```
+
+### `status` - Show Status
+
+```bash
+# Show status
+claude-ops status
+
+# Verbose output
+claude-ops status --verbose
+```
+
+### `handoff` - Create Director Handoff
+
+```bash
+# Create handoff
+claude-ops handoff architecture engineering "Implement auth system"
+
+# High priority
+claude-ops handoff security operations "Critical patch" --priority high
+```
+
+## Director Types
+
+| Director | Queenbee Type | Consensus | Workers |
+|----------|--------------|-----------|---------|
+| Architecture | Strategic | Majority | 8 |
+| Business | Strategic | Weighted | 8 |
+| Operations | Strategic | Byzantine | 8 |
+| Security | Strategic | Byzantine | 6 |
+| Design | Tactical | Majority | 6 |
+| Engineering | Tactical | Majority | 10 |
+| Documentation | Tactical | Majority | 4 |
+| Research | Adaptive | Majority | 6 |
+
+## WASM Security Layer
+
+The Rust-compiled WASM module provides:
+
+- **Prompt Injection Detection**: Jailbreaks, role manipulation, system prompt leakage
+- **Routing Validation**: Cross-domain handoff validation
+- **Input Sanitization**: Path traversal, XSS, control character filtering
+- **Memory Safety**: WASM sandbox prevents data leaks
 
 ## Directory Structure
 
+After `claude-ops init`:
+
 ```
 .claude/
-├── agents/           # Director-level agents (loaded into main context)
-├── teams/            # Domain-specific teams (queried via AgentDB)
-└── memory-bank/      # Shared memory structures
-    ├── active/       # Current context and issues
-    ├── constitutional/  # Core principles and constitution
-    ├── core/         # Execution policies and frameworks
-    ├── decision_log/ # Decision tracking templates
-    ├── index/        # Memory indexing
-    └── sops/         # Standard operating procedures
+├── agents/                    # 8 director templates
+│   ├── architecture-director.md
+│   ├── business-director.md
+│   ├── design-director.md
+│   ├── engineering-director.md
+│   ├── research-director.md
+│   ├── documentation-director.md
+│   ├── operations-director.md
+│   └── security-director.md
+├── teams/                     # Team-specific agents (AgentDB)
+├── memory-bank/               # Shared knowledge
+│   ├── active/
+│   ├── constitutional/
+│   ├── core/
+│   ├── decision_log/
+│   ├── index/
+│   └── sops/
+└── .hive-mind/               # Hive-mind configuration
+    └── config.json
 ```
 
-## Agents Overview
+## Integration with Claude-Flow
 
-The system uses a **director-based architecture** with eight specialized directors:
+Claude-ops wraps `claude-flow` for simplicity but provides:
 
-- **Architecture Director**: System design, patterns, technical decisions
-- **Business Director**: Strategy, priorities, resource allocation
-- **Design Director**: UX/DX, interfaces, API contracts
-- **Engineering Director**: Implementation, code, CI/CD
-- **Research Director**: Research, exploration, best practices
-- **Documentation Director**: Formal documentation
-- **Operations Director**: Production operations, monitoring, reliability
-- **Security Director**: Security architecture, risk management, compliance
+1. **Director-aware abstractions** (spawn all, spawn strategic)
+2. **WASM security validation** on all inputs
+3. **Template management** from core claude-ops repo
+4. **Simplified command surface** (4 commands vs 30+)
 
-See [`agents/README.md`](agents/README.md) for complete director documentation.
+## Development
 
-## Teams
+```bash
+# Clone repo
+git clone https://github.com/dwillitzer/claude-ops-cli
+cd claude-ops-cli
 
-Directors collaborate with domain-specific teams in their respective areas. Team members are discovered via AgentDB queries when their specialized expertise is needed.
+# Install dependencies
+npm install
 
-See [`teams/README.md`](teams/README.md) for team collaboration and coordination.
+# Build WASM module
+npm run build:wasm
 
-## Memory Bank
+# Test locally
+npm link
+claude-ops --help
+```
 
-The memory bank provides shared knowledge structures:
+## Publishing
 
-- **Active Context**: Current work and open issues
-- **Constitutional**: Core principles and governance
-- **Core**: Execution policies and frameworks  
-- **SOPs**: Standard operating procedures (handoffs, spawning, etc.)
-- **Decision Log**: Template for tracking decisions
+```bash
+# Build WASM first
+npm run build:wasm
 
-## Getting Started
+# Publish to npm
+npm version patch
+npm publish
+```
 
-1. Review the [agents directory](agents/) to understand the director system
-2. Check the [memory-bank/constitutional](memory-bank/constitutional/) for core principles
-3. See [memory-bank/sops](memory-bank/sops/) for operational procedures
+## License
 
-## Branch Strategy
+MIT © Daniel Willitzer
 
-- `main`: Production-ready agent configurations
-- `dev`: Development and experimental configurations
-- `research-foundations`: Original research and foundational work
+## Related
+
+- [claude-ops](https://github.com/dwillitzer/claude-ops) - Core director framework
+- [claude-flow](https://github.com/ruvnet/claude-flow) - Underlying orchestration system
 
 ---
 
-**Version**: 2.0  
-**Last Updated**: 2025-12-04
+**Version**: 0.1.0  
+**Author**: Daniel Willitzer <daniel@willitzer.com>

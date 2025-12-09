@@ -1,0 +1,14 @@
+node_modules/
+wasm/*.js
+wasm/*.wasm
+wasm/*.d.ts
+*.log
+.DS_Store
+.vscode/
+.idea/
+dist/
+coverage/
+.env
+.env.local
+security-wasm/target/
+security-wasm/Cargo.lock

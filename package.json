@@ -1,0 +1,42 @@
+{
+  "name": "claude-ops",
+  "version": "0.1.0",
+  "description": "Director-based multi-agent orchestration CLI with WASM security",
+  "main": "src/index.js",
+  "bin": {
+    "claude-ops": "./bin/claude-ops.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "wasm/"
+  ],
+  "scripts": {
+    "build:wasm": "cd security-wasm && cargo build --target wasm32-unknown-unknown --release && wasm-bindgen target/wasm32-unknown-unknown/release/security_wasm.wasm --out-dir ../wasm --target nodejs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "orchestration",
+    "claude",
+    "directors",
+    "hive-mind",
+    "wasm",
+    "security"
+  ],
+  "author": "rUv",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.0",
+    "ora": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
