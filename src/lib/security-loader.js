@@ -1,42 +1,51 @@
 /**
  * WASM Security Loader
- * Loads and interfaces with Rust-compiled WASM security module
+ * Loads sentinel-wasm compiled WASM security module
  */
 
+const path = require('path');
 let securityModule = null;
 
 /**
- * Load WASM security module
+ * Load WASM security module (sentinel-wasm)
  */
 async function loadSecurityModule() {
     if (securityModule) return securityModule;
 
     try {
-        // In production, this would load the compiled WASM
-        // For now, we'll use a mock implementation
+        // Load sentinel-wasm compiled module
+        const wasmPath = path.join(__dirname, '..', '..', 'wasm', 'sentinel_wasm.js');
+        const sentinelWasm = require(wasmPath);
+
+        // Initialize WASM
+        await sentinelWasm.default();
+
+        securityModule = {
+            // Map sentinel-wasm functions to our interface
+            validate_input: (input, type) => sentinelValidateInput(sentinelWasm, input, type),
+            sanitize_input: (input, type) => sentinelSanitizeInput(sentinelWasm, input, type),
+            validate_handoff: (from, to, context) => sentinelValidateHandoff(sentinelWasm, from, to, context),
+            detect_prompt_injection: (input) => sentinelWasm.check_permission(input)
+        };
+
+        return securityModule;
+    } catch (error) {
+        console.warn('Warning: sentinel-wasm not available, using fallback validation');
+        // Fallback to basic validation
         securityModule = {
             validate_input: mockValidateInput,
             sanitize_input: mockSanitizeInput,
             validate_handoff: mockValidateHandoff
         };
-
         return securityModule;
-    } catch (error) {
-        console.error('Warning: WASM security module not available, using fallback');
-        return null;
     }
 }
 
 /**
- * Validate input with WASM security checks
+ * Validate input with sentinel-wasm security checks
  */
 async function validateInput(input, type) {
     await loadSecurityModule();
-
-    if (!securityModule) {
-        // Fallback validation
-        return { safe: true, reason: 'WASM not loaded - using fallback' };
-    }
 
     try {
         const result = securityModule.validate_input(input, type);
@@ -47,14 +56,10 @@ async function validateInput(input, type) {
 }
 
 /**
- * Sanitize input using WASM
+ * Sanitize input using sentinel-wasm
  */
 async function sanitizeInput(input, type) {
     await loadSecurityModule();
-
-    if (!securityModule) {
-        return input; // Fallback
-    }
 
     try {
         return securityModule.sanitize_input(input, type);
@@ -63,14 +68,54 @@ async function sanitizeInput(input, type) {
     }
 }
 
-// Mock implementations (to be replaced by actual WASM)
+// Sentinel-WASM integration adapters
+function sentinelValidateInput(wasm, input, type) {
+    // Use sentinel-wasm's check_permission for validation
+    const permissionCheck = wasm.check_permission(input);
+
+    // Map to our validation result format
+    if (permissionCheck && permissionCheck.allowed !== undefined) {
+        return {
+            safe: permissionCheck.allowed,
+            reason: permissionCheck.allowed ? 'OK' : (permissionCheck.reason || 'Blocked by sentinel-wasm'),
+            sanitized: permissionCheck.sanitized_input
+        };
+    }
+
+    // Fallback to basic validation
+    return mockValidateInput(input, type);
+}
+
+function sentinelSanitizeInput(wasm, input, type) {
+    try {
+        // Sentinel-wasm provides sanitized output in check_permission
+        const result = wasm.check_permission(input);
+        return result.sanitized_input || input;
+    } catch (error) {
+        return mockSanitizeInput(input, type);
+    }
+}
+
+function sentinelValidateHandoff(wasm, from, to, context) {
+    // Validate context with sentinel-wasm
+    const contextCheck = wasm.check_permission(context);
+
+    // Also validate director names
+    const validDirectors = ['architecture', 'business', 'design', 'engineering', 'research', 'documentation', 'operations', 'security'];
+
+    return {
+        valid: contextCheck.allowed && validDirectors.includes(from) && validDirectors.includes(to),
+        reason: contextCheck.allowed ? 'OK' : (contextCheck.reason || 'Blocked by sentinel-wasm')
+    };
+}
+
+// Fallback mock implementations (used if sentinel-wasm not available)
 function mockValidateInput(input, type) {
-    // Basic validation rules
     const rules = {
         director: /^(architecture|business|design|engineering|research|documentation|operations|security)$/,
         queenbee_type: /^(strategic|tactical|adaptive)$/,
         path: /^[a-zA-Z0-9\/\-_\.~]+$/,
-        handoff_context: /.{1,500}/ // Max 500 chars
+        handoff_context: /.{1,500}/
     };
 
     if (type in rules) {
@@ -85,10 +130,9 @@ function mockValidateInput(input, type) {
 }
 
 function mockSanitizeInput(input, type) {
-    // Basic sanitization
     return input
-        .replace(/[<>]/g, '') // Remove potential HTML
-        .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+        .replace(/[<>]/g, '')
+        .replace(/[\x00-\x1F\x7F]/g, '')
         .trim();
 }
 

@@ -12,7 +12,8 @@
     "wasm/"
   ],
   "scripts": {
-    "build:wasm": "cd security-wasm && cargo build --target wasm32-unknown-unknown --release && wasm-bindgen target/wasm32-unknown-unknown/release/security_wasm.wasm --out-dir ../wasm --target nodejs",
+    "build:wasm": "echo 'Using sentinel-wasm from ../sentinel-wasm/pkg/' && cp ../sentinel-wasm/pkg/sentinel_wasm* wasm/",
+    "update:wasm": "cp ../sentinel-wasm/pkg/sentinel_wasm* wasm/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
