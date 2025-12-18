@@ -1,0 +1,102 @@
+{
+  "name": "active",
+  "created": "2025-12-18T10:12:49.423Z",
+  "updated": "2025-12-18T10:13:15.941Z",
+  "features": [
+    {
+      "id": "e6c3e8be-152e-4dc4-a991-5b0db9355386",
+      "name": "Test Feature",
+      "description": "A test feature for CLI validation",
+      "director": "engineering",
+      "priority": "high",
+      "status": "pending",
+      "createdAt": "2025-12-18T10:12:49.425Z",
+      "updatedAt": "2025-12-18T10:13:15.940Z",
+      "validation": {
+        "status": "not_started",
+        "gates": [
+          {
+            "id": 1,
+            "name": "isolation",
+            "description": "Feature Isolation Test",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T10:13:15.940Z",
+            "passedBy": "cli",
+            "notes": "Isolated and tested"
+          },
+          {
+            "id": 2,
+            "name": "tests",
+            "description": "Feature Test Execution (>80% coverage)",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 3,
+            "name": "runtime",
+            "description": "Runtime Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 4,
+            "name": "stubs",
+            "description": "Stub Detection",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 5,
+            "name": "qa",
+            "description": "QA Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 6,
+            "name": "production",
+            "description": "Production Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 7,
+            "name": "constitutional",
+            "description": "Constitutional Review",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          }
+        ]
+      },
+      "dependencies": [],
+      "blockers": [],
+      "progress": [
+        {
+          "timestamp": "2025-12-18T10:13:15.940Z",
+          "type": "gate_validation",
+          "gate": "isolation",
+          "result": "passed"
+        }
+      ]
+    }
+  ]
+}

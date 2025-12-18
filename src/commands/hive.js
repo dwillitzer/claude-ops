@@ -30,7 +30,12 @@ const DIRECTORS = [
 function loadHiveState() {
     const statePath = path.join(process.cwd(), HIVE_STATE_PATH);
     if (fs.existsSync(statePath)) {
-        return JSON.parse(fs.readFileSync(statePath, 'utf8'));
+        const state = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+        // Ensure all required fields exist (backwards compatibility)
+        if (!state.broadcasts) state.broadcasts = [];
+        if (!state.consensusRequests) state.consensusRequests = [];
+        if (!state.pendingHandoffs) state.pendingHandoffs = [];
+        return state;
     }
 
     // Initialize default state

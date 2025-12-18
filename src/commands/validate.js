@@ -57,10 +57,14 @@ async function daily(options) {
             results.failed.push('Execution Policy not found');
         }
 
-        // Check 3: Director files exist
+        // Check 3: Director files exist (check both 'directors/' and 'agents/' for compatibility)
         const directorsPath = path.join(process.cwd(), DIRECTORS_DIR);
-        if (fs.existsSync(directorsPath)) {
-            const directors = fs.readdirSync(directorsPath).filter(f => f.endsWith('.md'));
+        const agentsPath = path.join(process.cwd(), 'agents');
+        const actualPath = fs.existsSync(directorsPath) ? directorsPath :
+                           fs.existsSync(agentsPath) ? agentsPath : null;
+
+        if (actualPath) {
+            const directors = fs.readdirSync(actualPath).filter(f => f.endsWith('.md'));
             const requiredDirectors = ['architecture', 'business', 'design', 'engineering', 'research', 'documentation', 'operations', 'security'];
 
             for (const req of requiredDirectors) {
@@ -280,7 +284,7 @@ async function compliance(options) {
     const checks = [
         { name: 'Constitution Present', path: CONSTITUTION_PATH },
         { name: 'Execution Policy Present', path: EXECUTION_POLICY_PATH },
-        { name: 'Directors Configured', path: DIRECTORS_DIR, isDir: true },
+        { name: 'Directors Configured', path: DIRECTORS_DIR, altPath: 'agents', isDir: true },
         { name: 'Validation Team Present', path: 'teams/validation', isDir: true },
         { name: 'Memory Bank Active', path: 'memory-bank/active', isDir: true },
         { name: 'Feature Tracking', path: 'memory-bank/feature_lists', isDir: true },
@@ -292,7 +296,8 @@ async function compliance(options) {
 
     for (const check of checks) {
         const fullPath = path.join(process.cwd(), check.path);
-        const exists = fs.existsSync(fullPath);
+        const altPath = check.altPath ? path.join(process.cwd(), check.altPath) : null;
+        const exists = fs.existsSync(fullPath) || (altPath && fs.existsSync(altPath));
 
         if (exists) {
             console.log(chalk.green('✓'), chalk.white(check.name));

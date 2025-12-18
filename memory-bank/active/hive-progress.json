@@ -4,47 +4,86 @@
   "directors": {
     "architecture": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "business": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "design": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "engineering": {
-      "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "status": "active",
+      "lastActivity": "2025-12-18T10:14:07.496Z",
+      "currentTask": "CLI testing",
+      "blockers": [],
+      "contributions": 0
     },
     "research": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "documentation": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "operations": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     },
     "security": {
       "status": "idle",
-      "currentFeature": null,
-      "lastUpdated": null
+      "lastActivity": "2025-12-18T10:13:50.592Z",
+      "currentTask": null,
+      "blockers": [],
+      "contributions": 0
     }
   },
   "pendingHandoffs": [],
   "activeFeatures": [],
   "blockedFeatures": [],
-  "completedToday": []
+  "completedToday": [],
+  "activeCoordination": null,
+  "lastUpdated": "2025-12-18T10:15:02.045Z",
+  "broadcasts": [
+    {
+      "id": "0f37110e-afc7-4ac9-a76a-e5e51908f195",
+      "timestamp": "2025-12-18T10:15:02.044Z",
+      "from": "engineering",
+      "priority": "high",
+      "message": "CLI v2.0 testing complete",
+      "targets": [
+        "architecture",
+        "business",
+        "design",
+        "engineering",
+        "research",
+        "documentation",
+        "operations",
+        "security"
+      ],
+      "acknowledged": []
+    }
+  ],
+  "consensusRequests": []
 }
