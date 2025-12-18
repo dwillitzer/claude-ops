@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "updated": "2024-12-18T00:00:00.000Z",
+  "directors": {
+    "architecture": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "business": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "design": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "engineering": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "research": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "documentation": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "operations": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    },
+    "security": {
+      "status": "idle",
+      "currentFeature": null,
+      "lastUpdated": null
+    }
+  },
+  "pendingHandoffs": [],
+  "activeFeatures": [],
+  "blockedFeatures": [],
+  "completedToday": []
+}

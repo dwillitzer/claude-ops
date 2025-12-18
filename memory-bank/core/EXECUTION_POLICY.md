@@ -294,7 +294,84 @@ Task is NOT complete until:
 
 ---
 
-**Version**: 1.0
-**Last Updated**: [Date]
+## 7. QUALITY GATES (MANDATORY)
+
+### 7.1 Feature Validation Pipeline
+```
+ALL features MUST pass validation before completion.
+
+GATE 1: Feature Isolation Test
+- Compile/run independently
+- No missing dependencies
+
+GATE 2: Feature Test Execution
+- All tests pass
+- Coverage threshold met (>80%)
+
+GATE 3: Runtime Validation
+- End-to-end functionality works
+- Error cases handled
+
+GATE 4: Stub Detection
+- No TODO/FIXME in critical paths
+- No unimplemented methods
+- No placeholder implementations
+
+GATE 5: QA Validation
+- qa-validation-specialist approves
+- PASS or CONDITIONAL decision
+
+GATE 6: Production Validation
+- production-validator approves
+- READY decision
+
+GATE 7: Constitutional Review
+- constitutional-review-authority approves
+- FULL_APPROVAL decision
+```
+
+### 7.2 Zero Tolerance Rules
+```
+INSTANT REJECTION:
+- Features that fail when enabled
+- Methods with declarations but no implementations
+- Examples that can't run with their features
+- Gated code without validation
+- Skipping validation gates
+
+NO EXCEPTIONS.
+```
+
+### 7.3 Evidence Requirements
+```
+EVERY claim requires evidence:
+
+"Tests pass" → Show test output
+"Feature works" → Runtime demonstration
+"Complete" → All checklist items verified
+"No issues" → Validation results
+
+CLAIMS WITHOUT EVIDENCE = INVALID
+```
+
+### 7.4 Validation Commands
+```bash
+# Validate a specific feature
+claude-ops feature validate --id <feature-id>
+
+# Run daily constitutional check
+claude-ops validate daily
+
+# Run weekly maritime validation
+claude-ops validate weekly
+
+# Generate compliance report
+claude-ops validate report
+```
+
+---
+
+**Version**: 1.1
+**Last Updated**: 2024-12-18
 **Authority**: Core Policy
 **Subject To**: Constitution

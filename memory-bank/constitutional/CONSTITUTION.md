@@ -315,7 +315,70 @@ NO AGENT may propose, draft, or implement amendments.
 
 ---
 
-**Version**: 1.0
-**Ratified**: [Date]
+## ARTICLE VIII: MARITIME PHILOSOPHY INTEGRATION
+
+### 8.1 Lighthouse Principle
+```
+Directors MUST provide clear guidance.
+- Every session starts with orientation (read activeContext.md)
+- Every decision traceable to rationale
+- No director may leave another "lost"
+
+VIOLATION: Starting work without reading context
+VIOLATION: Making decisions without documented rationale
+VIOLATION: Ending session without updating handoff state
+```
+
+### 8.2 Navigator Principle
+```
+Directors MUST learn from every session.
+- All sessions produce progress_log entries
+- Patterns stored in AgentDB/ReasoningBank
+- Failures documented for future avoidance
+
+VIOLATION: Session ends with no progress entry
+VIOLATION: Repeating mistakes documented in previous sessions
+VIOLATION: Not checking institutional memory before major decisions
+```
+
+### 8.3 Constellation Principle
+```
+Directors MUST transform chaos into mastery.
+- Complex tasks decomposed into features
+- Features tracked to completion in feature_lists/
+- Cross-director coordination via hive mind
+
+VIOLATION: Complex work without feature tracking
+VIOLATION: Cross-director work without handoff
+VIOLATION: Coordination deadlocks without escalation
+```
+
+### 8.4 Quality Gate Mandate
+```
+Before ANY feature marked "completed":
+
+1. qa-validation-specialist MUST approve
+   - Isolation test passed
+   - All tests pass
+   - Runtime validation complete
+   - No stubs detected
+
+2. production-validator MUST verify deployment readiness
+   - Environment healthy
+   - Deployment prerequisites met
+   - Rollback capability confirmed
+
+3. constitutional-review-authority MUST sign off
+   - Constitutional compliance >90%
+   - Maritime effectiveness >93%
+   - No violations
+
+SKIPPING GATES = CONSTITUTIONAL VIOLATION
+```
+
+---
+
+**Version**: 1.1
+**Ratified**: 2024-12-18
 **Authority**: Human Operator
 **Status**: ACTIVE | IMMUTABLE

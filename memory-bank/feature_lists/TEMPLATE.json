@@ -1,0 +1,39 @@
+{
+  "director": "[director-name]",
+  "version": "1.0",
+  "updated": "[ISO-8601-timestamp]",
+  "features": [
+    {
+      "id": "[DIRECTOR_PREFIX]-001",
+      "description": "Feature description",
+      "category": "category-name",
+      "priority": "high|medium|low",
+      "status": "pending|in_progress|blocked|completed",
+      "dependencies": [],
+      "created": "[ISO-8601-timestamp]",
+      "updated": "[ISO-8601-timestamp]",
+      "validation": {
+        "qa_validation": {
+          "status": "pending|passed|failed",
+          "decision": null,
+          "timestamp": null
+        },
+        "production_validation": {
+          "status": "pending|passed|failed",
+          "ready": false,
+          "timestamp": null
+        },
+        "constitutional_review": {
+          "status": "pending|passed|failed",
+          "decision": null,
+          "complianceScore": null,
+          "maritimeScore": null,
+          "timestamp": null
+        }
+      },
+      "notes": [],
+      "blockers": null,
+      "completedAt": null
+    }
+  ]
+}

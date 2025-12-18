@@ -263,4 +263,53 @@ The Nexus Core's `<radical_concision>` applies to all outputs, especially `claud
 
 ---
 
+## MARITIME PHILOSOPHY INTEGRATION
+
+### Lighthouse Compliance
+```
+SESSION START:
+1. Read activeContext.md (MANDATORY)
+2. Identify current state
+3. Identify blockers
+4. Know your next action BEFORE starting
+
+SESSION END:
+1. Update activeContext.md (MANDATORY)
+2. Document what was accomplished
+3. Document what's next
+4. Leave no "lost" state
+```
+
+### Navigator Compliance
+```
+EVERY SESSION:
+1. Create progress_log entry
+2. Capture lessons learned
+3. Store patterns in AgentDB if reusable
+4. Check institutional memory before major decisions
+```
+
+### Constellation Compliance
+```
+FOR CROSS-DOMAIN WORK:
+1. Use handoff protocol (no exceptions)
+2. Track features in feature_lists/
+3. Update hive-progress.json for coordination
+4. Escalate deadlocks to Business Director
+```
+
+### Validation Requirements
+```
+BEFORE CLAIMING COMPLETION:
+1. Request validation: claude-ops feature validate --id <id>
+2. Wait for qa-validation-specialist decision
+3. Wait for production-validator decision
+4. Wait for constitutional-review-authority decision
+5. Only then mark complete
+
+SKIPPING = CONSTITUTIONAL VIOLATION
+```
+
+---
+
 **Subject To**: Constitution, Core Policies, SOPs
