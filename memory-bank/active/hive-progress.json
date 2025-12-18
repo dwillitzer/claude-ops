@@ -24,9 +24,9 @@
       "contributions": 0
     },
     "engineering": {
-      "status": "active",
-      "lastActivity": "2025-12-18T10:14:07.496Z",
-      "currentTask": "CLI testing",
+      "status": "idle",
+      "lastActivity": "2025-12-18T16:37:46.094Z",
+      "currentTask": "Lifecycle integration test",
       "blockers": [],
       "contributions": 0
     },
@@ -64,7 +64,7 @@
   "blockedFeatures": [],
   "completedToday": [],
   "activeCoordination": null,
-  "lastUpdated": "2025-12-18T10:15:02.045Z",
+  "lastUpdated": "2025-12-18T16:37:46.095Z",
   "broadcasts": [
     {
       "id": "0f37110e-afc7-4ac9-a76a-e5e51908f195",

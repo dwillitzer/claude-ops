@@ -1,0 +1,37 @@
+{
+  "id": "4a940b19-642b-4266-85ed-5d0b53788a05",
+  "type": "claude-code",
+  "director": "engineering",
+  "feature": null,
+  "createdAt": "2025-12-18T16:37:25.510Z",
+  "updatedAt": "2025-12-18T16:37:31.172Z",
+  "status": "active",
+  "checkpoints": [
+    {
+      "id": "b2a20d83-b250-42ef-bef0-82cf7ca2eea9",
+      "timestamp": "2025-12-18T16:37:31.172Z",
+      "name": "pre-validation",
+      "state": {},
+      "notes": "About to start validation phase",
+      "files": [],
+      "recoverable": true
+    }
+  ],
+  "context": {
+    "prompt": null,
+    "model": "default",
+    "workdir": "/home/user/claude-ops"
+  },
+  "progress": [
+    {
+      "timestamp": "2025-12-18T16:37:31.172Z",
+      "action": "resumed",
+      "details": "Session resumed"
+    }
+  ],
+  "metadata": {
+    "cwd": "/home/user/claude-ops",
+    "node_version": "v22.21.1",
+    "platform": "linux"
+  }
+}

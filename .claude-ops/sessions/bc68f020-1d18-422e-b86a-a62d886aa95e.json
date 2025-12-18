@@ -1,0 +1,21 @@
+{
+  "id": "bc68f020-1d18-422e-b86a-a62d886aa95e",
+  "type": "claude-code",
+  "director": "architecture",
+  "feature": null,
+  "createdAt": "2025-12-18T16:37:11.680Z",
+  "updatedAt": "2025-12-18T16:37:11.681Z",
+  "status": "active",
+  "checkpoints": [],
+  "context": {
+    "prompt": null,
+    "model": "default",
+    "workdir": "/home/user/claude-ops"
+  },
+  "progress": [],
+  "metadata": {
+    "cwd": "/home/user/claude-ops",
+    "node_version": "v22.21.1",
+    "platform": "linux"
+  }
+}

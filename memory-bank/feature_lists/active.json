@@ -1,7 +1,7 @@
 {
   "name": "active",
   "created": "2025-12-18T10:12:49.423Z",
-  "updated": "2025-12-18T10:13:15.941Z",
+  "updated": "2025-12-18T16:38:21.191Z",
   "features": [
     {
       "id": "e6c3e8be-152e-4dc4-a991-5b0db9355386",
@@ -97,6 +97,319 @@
           "result": "passed"
         }
       ]
+    },
+    {
+      "id": "35379ae3-fb2c-46ce-87db-37901192518f",
+      "name": "Lifecycle Integration Feature",
+      "description": "End-to-end test of claude-ops",
+      "director": "engineering",
+      "priority": "high",
+      "status": "completed",
+      "createdAt": "2025-12-18T16:37:27.661Z",
+      "updatedAt": "2025-12-18T16:37:42.715Z",
+      "validation": {
+        "status": "completed",
+        "gates": [
+          {
+            "id": 1,
+            "name": "isolation",
+            "description": "Feature Isolation Test",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:33.545Z",
+            "passedBy": "cli",
+            "notes": "Feature compiles and runs in isolation"
+          },
+          {
+            "id": 2,
+            "name": "tests",
+            "description": "Feature Test Execution (>80% coverage)",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:34.730Z",
+            "passedBy": "cli",
+            "notes": "All unit tests pass with >80% coverage"
+          },
+          {
+            "id": 3,
+            "name": "runtime",
+            "description": "Runtime Validation",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:35.868Z",
+            "passedBy": "cli",
+            "notes": "End-to-end functionality verified"
+          },
+          {
+            "id": 4,
+            "name": "stubs",
+            "description": "Stub Detection",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:37.037Z",
+            "passedBy": "cli",
+            "notes": "No placeholder implementations detected"
+          },
+          {
+            "id": 5,
+            "name": "qa",
+            "description": "QA Validation",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:38.192Z",
+            "passedBy": "cli",
+            "notes": "QA validation specialist approved"
+          },
+          {
+            "id": 6,
+            "name": "production",
+            "description": "Production Validation",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:39.343Z",
+            "passedBy": "cli",
+            "notes": "Production validator confirmed readiness"
+          },
+          {
+            "id": 7,
+            "name": "constitutional",
+            "description": "Constitutional Review",
+            "required": true,
+            "status": "passed",
+            "passedAt": "2025-12-18T16:37:40.459Z",
+            "passedBy": "cli",
+            "notes": "Constitutional review passed"
+          }
+        ]
+      },
+      "dependencies": [],
+      "blockers": [],
+      "progress": [
+        {
+          "timestamp": "2025-12-18T16:37:33.546Z",
+          "type": "gate_validation",
+          "gate": "isolation",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:34.731Z",
+          "type": "gate_validation",
+          "gate": "tests",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:35.869Z",
+          "type": "gate_validation",
+          "gate": "runtime",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:37.038Z",
+          "type": "gate_validation",
+          "gate": "stubs",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:38.193Z",
+          "type": "gate_validation",
+          "gate": "qa",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:39.344Z",
+          "type": "gate_validation",
+          "gate": "production",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:40.460Z",
+          "type": "gate_validation",
+          "gate": "constitutional",
+          "result": "passed"
+        },
+        {
+          "timestamp": "2025-12-18T16:37:42.715Z",
+          "type": "completed",
+          "content": "Lifecycle test completed successfully"
+        }
+      ],
+      "completedAt": "2025-12-18T16:37:42.714Z"
+    },
+    {
+      "id": "98b7a209-7448-4742-ba8a-c097ec3d77af",
+      "name": "Complex Task Decomposition",
+      "description": "Multi-step implementation",
+      "director": null,
+      "priority": "high",
+      "status": "pending",
+      "createdAt": "2025-12-18T16:38:17.792Z",
+      "updatedAt": "2025-12-18T16:38:17.793Z",
+      "validation": {
+        "status": "not_started",
+        "gates": [
+          {
+            "id": 1,
+            "name": "isolation",
+            "description": "Feature Isolation Test",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 2,
+            "name": "tests",
+            "description": "Feature Test Execution (>80% coverage)",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 3,
+            "name": "runtime",
+            "description": "Runtime Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 4,
+            "name": "stubs",
+            "description": "Stub Detection",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 5,
+            "name": "qa",
+            "description": "QA Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 6,
+            "name": "production",
+            "description": "Production Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 7,
+            "name": "constitutional",
+            "description": "Constitutional Review",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          }
+        ]
+      },
+      "dependencies": [],
+      "blockers": [],
+      "progress": []
+    },
+    {
+      "id": "823e7508-07f2-4944-9b42-0f583d8d09ed",
+      "name": "Constellation Validation Test",
+      "description": "",
+      "director": null,
+      "priority": "normal",
+      "status": "pending",
+      "createdAt": "2025-12-18T16:38:21.191Z",
+      "updatedAt": "2025-12-18T16:38:21.191Z",
+      "validation": {
+        "status": "not_started",
+        "gates": [
+          {
+            "id": 1,
+            "name": "isolation",
+            "description": "Feature Isolation Test",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 2,
+            "name": "tests",
+            "description": "Feature Test Execution (>80% coverage)",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 3,
+            "name": "runtime",
+            "description": "Runtime Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 4,
+            "name": "stubs",
+            "description": "Stub Detection",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 5,
+            "name": "qa",
+            "description": "QA Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 6,
+            "name": "production",
+            "description": "Production Validation",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          },
+          {
+            "id": 7,
+            "name": "constitutional",
+            "description": "Constitutional Review",
+            "required": true,
+            "status": "pending",
+            "passedAt": null,
+            "passedBy": null,
+            "notes": ""
+          }
+        ]
+      },
+      "dependencies": [],
+      "blockers": [],
+      "progress": []
     }
   ]
 }
