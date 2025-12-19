@@ -334,6 +334,41 @@ hiveCmd
     .action(hiveCommand.init);
 
 // ============================================================================
+// TMUX ORCHESTRATION COMMANDS (v2.0)
+// ============================================================================
+
+const orchestrateCommand = require('../src/commands/orchestrate');
+
+const orchestrateCmd = program
+    .command('orchestrate')
+    .description('Tmux-based multi-agent orchestration');
+
+orchestrateCmd
+    .command('start')
+    .description('Start tmux orchestration session with directors')
+    .option('-s, --session <name>', 'Session name', 'claude-ops')
+    .option('-d, --directors <list>', 'Directors to spawn (comma-separated)', 'engineering,architecture,research,operations')
+    .option('-a, --attach', 'Attach to session after creation')
+    .action(orchestrateCommand.start);
+
+orchestrateCmd
+    .command('stop')
+    .description('Stop orchestration session')
+    .option('-s, --session <name>', 'Session name', 'claude-ops')
+    .action(orchestrateCommand.stop);
+
+orchestrateCmd
+    .command('list')
+    .description('List tmux sessions')
+    .action(orchestrateCommand.list);
+
+orchestrateCmd
+    .command('send <director> <command>')
+    .description('Send command to a director pane')
+    .option('-s, --session <name>', 'Session name', 'claude-ops')
+    .action(orchestrateCommand.send);
+
+// ============================================================================
 // Parse and execute
 // ============================================================================
 
