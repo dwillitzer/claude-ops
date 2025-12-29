@@ -1,0 +1,16 @@
+# Native Claude Code (don't track)
+plans/
+projects/
+todos/
+statsig/
+telemetry/
+shell-snapshots/
+session-env/
+settings.json
+*.sh
+
+# Track claude-ops content
+!agents/
+!teams/
+!memory-bank/
+!skills/
